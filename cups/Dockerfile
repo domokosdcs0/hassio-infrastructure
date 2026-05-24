@@ -33,12 +33,6 @@ RUN apt-get update && \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN wget -q https://www.bchemnet.com/suldr/pool/debian/extra/su/suldr-keyring_2_all.deb \
-    && echo "deb https://www.bchemnet.com/suldr/ debian extra" >> /etc/apt/sources.list \
-    && dpkg -i suldr-keyring_2_all.deb && apt-get update \
-    && apt-get install -y suld-driver2-1.00.39hp && apt-get clean -y \
-    && rm -f suldr-keyring_2_all.deb && rm -rf /var/lib/apt/lists/*
-
 # run hp-plugin via an expect script without heredoc
 RUN set -eux; \
     printf '%s\n' \
